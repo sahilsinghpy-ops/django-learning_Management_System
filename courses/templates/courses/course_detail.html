@@ -1,0 +1,123 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Course Detail</title>
+    <link rel="stylesheet" href="{% static 'courses/css/dashboard.css' %}">
+    <style>
+        .lesson-list {
+            margin-top: 20px;
+        }
+        .lesson-item {
+            background: white;
+            border-radius: 10px;
+            padding: 15px 20px;
+            margin-bottom: 10px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        .lesson-number {
+            width: 35px;
+            height: 35px;
+            background: #4a90e2;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            flex-shrink: 0;
+        }
+        .lesson-info h4 {
+            color: #333;
+            margin-bottom: 4px;
+        }
+        .lesson-info p {
+            color: #666;
+            font-size: 13px;
+        }
+        .lesson-info a {
+            color: #4a90e2;
+            font-size: 13px;
+        }
+        .course-header {
+            background: white;
+            border-radius: 10px;
+            padding: 25px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+            margin-bottom: 20px;
+        }
+        .course-header h2 {
+            color: #333;
+            margin-bottom: 8px;
+        }
+        .course-header p {
+            color: #666;
+            margin-bottom: 5px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="navbar">
+        <h1 id="courseTitle">Course Detail</h1>
+        <div style="display:flex; gap:15px; align-items:center">
+            <div style="display:flex; align-items:center; gap:8px; background:rgba(255,255,255,0.2); padding:8px 15px; border-radius:20px;">
+                <div style="width:32px; height:32px; border-radius:50%; background:white; display:flex; align-items:center; justify-content:center;">
+                    <span id="navIcon" style="color:#4a90e2; font-weight:700; font-size:14px;"></span>
+                </div>
+                <span id="navUsername" style="color:white; font-weight:600; font-size:14px;"></span>
+            </div>
+            <button onclick="goBack()">Back</button>
+            <button onclick="logout()">Logout</button>
+        </div>
+    </div>
+
+    <div class="container">
+
+        <div class="course-header" id="courseHeader">
+            <p style="color:#999">Loading...</p>
+        </div>
+
+        <p class="section-title">Lessons</p>
+
+        <div class="lesson-list" id="lessonList">
+            <p style="color:#999">Loading lessons...</p>
+        </div>
+
+    </div>
+    <!-- Edit Lesson Modal -->
+<div class="modal-overlay" id="editModal">
+    <div class="modal">
+        <h3>Edit Lesson</h3>
+        <input type="hidden" id="editLessonId">
+        <div class="error" id="editError"></div>
+        <div class="form-group">
+            <label>Title</label>
+            <input type="text" id="editTitle">
+        </div>
+        <div class="form-group">
+            <label>Content</label>
+            <textarea id="editContent"></textarea>
+        </div>
+        <div class="form-group">
+            <label>Video URL</label>
+            <input type="text" id="editVideoUrl" placeholder="https://youtube.com/...">
+        </div>
+        <div class="form-group">
+            <label>Order</label>
+            <input type="number" id="editOrder">
+        </div>
+        <div class="modal-actions">
+            <button class="btn btn-primary" onclick="updateLesson()">Save Changes</button>
+            <button class="btn btn-secondary" onclick="closeEditModal()">Cancel</button>
+        </div>
+    </div>
+</div>
+    <script src="{% static 'courses/js/course_detail.js' %}"></script>
+</body>
+</html>

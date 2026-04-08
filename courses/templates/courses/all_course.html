@@ -1,0 +1,35 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All Courses</title>
+    <link rel="stylesheet" href="{% static 'courses/css/dashboard.css' %}">
+</head>
+<body>
+
+   <div class="navbar">
+    <h1>Browse Courses</h1>
+    <div style="display:flex; gap:15px; align-items:center">
+        <div style="display:flex; align-items:center; gap:8px; background:rgba(255,255,255,0.2); padding:8px 15px; border-radius:20px;">
+            <div style="width:32px; height:32px; border-radius:50%; background:white; display:flex; align-items:center; justify-content:center;">
+                <span id="navIcon" style="color:#4a90e2; font-weight:700; font-size:14px;"></span>
+            </div>
+            <span id="navUsername" style="color:white; font-weight:600; font-size:14px;"></span>
+        </div>
+        <button onclick="window.location.href='/courses/student/dashboard/'">My Dashboard</button>
+        <button onclick="logout()">Logout</button>
+    </div>
+</div>
+
+    <div class="container">
+        <p class="section-title">All Available Courses</p>
+        <div class="courses-grid" id="allCoursesGrid">
+            <p style="color:#999">Loading...</p>
+        </div>
+    </div>
+
+    <script src="{% static 'courses/js/all_courses.js' %}"></script>
+</body>
+</html>

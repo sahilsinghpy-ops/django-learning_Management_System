@@ -1,0 +1,92 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teacher Dashboard</title>
+    <link rel="stylesheet" href="{% static 'courses/css/dashboard.css' %}">
+</head>
+<body>
+
+   <div class="navbar">
+    <h1>Teacher Dashboard</h1>
+    <div style="display:flex; gap:15px; align-items:center">
+        <div style="display:flex; align-items:center; gap:8px; background:rgba(255,255,255,0.2); padding:8px 15px; border-radius:20px;">
+            <div style="width:32px; height:32px; border-radius:50%; background:white; display:flex; align-items:center; justify-content:center;">
+                <span id="navIcon" style="color:#4a90e2; font-weight:700; font-size:14px;"></span>
+            </div>
+            <span id="navUsername" style="color:white; font-weight:600; font-size:14px;"></span>
+        </div>
+        <button onclick="logout()">Logout</button>
+    </div>
+</div>
+
+    <div class="container">
+
+        <div style="display:flex; justify-content:space-between; align-items:center">
+            <p class="section-title">My Courses</p>
+            <button class="btn btn-primary" onclick="openCourseModal()">+ Add Course</button>
+        </div>
+
+        <div class="courses-grid" id="coursesGrid">
+            <p style="color:#999">Loading...</p>
+        </div>
+
+    </div>
+
+    <!-- Create Course Modal -->
+    <div class="modal-overlay" id="courseModal">
+        <div class="modal">
+            <h3>Create New Course</h3>
+            <div class="error" id="courseError"></div>
+            <div class="form-group">
+                <label>Title</label>
+                <input type="text" id="courseTitle" placeholder="Course title">
+            </div>
+            <div class="form-group">
+                <label>Description</label>
+                <textarea id="courseDesc" placeholder="Course description"></textarea>
+            </div>
+            <div class="form-group">
+                <label>Category</label>
+                <select id="courseCategory"></select>
+            </div>
+            <div class="modal-actions">
+                <button class="btn btn-primary" onclick="createCourse()">Create</button>
+                <button class="btn btn-secondary" onclick="closeCourseModal()">Cancel</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Add Lesson Modal -->
+    <div class="modal-overlay" id="lessonModal">
+        <div class="modal">
+            <h3>Add Lesson</h3>
+            <div class="error" id="lessonError"></div>
+            <div class="form-group">
+                <label>Title</label>
+                <input type="text" id="lessonTitle" placeholder="Lesson title">
+            </div>
+            <div class="form-group">
+                <label>Content</label>
+                <textarea id="lessonContent" placeholder="Lesson content"></textarea>
+            </div>
+            <div class="form-group">
+                <label>Video URL</label>
+                <input type="text" id="lessonVideo" placeholder="https://youtube.com/...">
+            </div>
+            <div class="form-group">
+                <label>Order</label>
+                <input type="number" id="lessonOrder" placeholder="1" value="1">
+            </div>
+            <div class="modal-actions">
+                <button class="btn btn-primary" onclick="createLesson()">Add Lesson</button>
+                <button class="btn btn-secondary" onclick="closeLessonModal()">Cancel</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="{% static 'courses/js/teacher.js' %}"></script>
+</body>
+</html>

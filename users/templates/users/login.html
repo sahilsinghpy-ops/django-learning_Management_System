@@ -1,0 +1,35 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="{% static 'users/css/auth.css' %}">
+</head>
+<body>
+    <div class="card">
+        <h2>Login</h2>
+
+        <div class="error" id="errorMsg"></div>
+
+        <div class="form-group">
+            <label>Username</label>
+            <input type="text" id="username" placeholder="johndoe">
+        </div>
+
+        <div class="form-group">
+            <label>Password</label>
+            <input type="password" id="password" placeholder="••••••••">
+        </div>
+
+        <button onclick="login()">Login</button>
+
+        <div class="bottom-link">
+            Don't have an account? <a href="/users/register-page/">Register here</a>
+        </div>
+    </div>
+
+    <script src="{% static 'users/js/login.js' %}"></script>
+</body>
+</html>
